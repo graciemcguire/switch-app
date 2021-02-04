@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react'
+
 
 function App() {
+  const [ toggle, setToggle ] = useState(false)
+  const [ color, setColor ] = useState('#000')
+
+  const handleClick = () => setColor(`#${Math.floor(Math.random()*16777215).toString(16)}`)
+
+  useEffect(()=> {
+    setColor(`#${Math.floor(Math.random()*16777215).toString(16)}`)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   
+    <div style={{ background: color, padding: '30px'}} className="App">
+      <button  onClick={ handleClick }>Click me!</button>
     </div>
   );
 }
