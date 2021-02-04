@@ -1,16 +1,27 @@
 import './App.css';
 import { useState, useEffect } from 'react'
 
+function useColor(toggle = false) {
+  const [ color, setColor ] = useState('#000')
+
+  useEffect(()=> {
+    // if (toggle) {
+    //   setColor('#000')
+    // } else {
+    //   setColor(`#${Math.floor(Math.random()*16777215).toString(16)}`)
+    // }
+
+    setColor(`#${Math.floor(Math.random()*16777215).toString(16)}`)
+  }, [toggle])
+
+  return color;
+}
 
 function App() {
   const [ toggle, setToggle ] = useState(false)
-  const [ color, setColor ] = useState('#000')
-
-  const handleClick = () => setColor(`#${Math.floor(Math.random()*16777215).toString(16)}`)
-
-  useEffect(()=> {
-    setColor(`#${Math.floor(Math.random()*16777215).toString(16)}`)
-  }, [])
+  const color = useColor(toggle);
+  
+  const handleClick = () => setToggle(prevState => !prevState)
 
   return (
    
