@@ -4,6 +4,10 @@ import { useState, useEffect } from 'react'
 function useColor(toggle = false) {
   const [ color, setColor ] = useState('#000')
 
+  const setInput = (setter) => (event) =>  {
+    setter(event.currentTarget.value)
+  }
+
   useEffect(()=> {
     // if (toggle) {
     //   setColor('#000')
